@@ -1,4 +1,5 @@
 .greetingForm {
+
 }
 
 .inputAndButtonContainer {
@@ -8,12 +9,14 @@
 }
 
 .input {
+  color:blueviolet
 }
 
 .input:focus {
 }
 
 .errorInput {
+  color: red;
 }
 
 .button {
