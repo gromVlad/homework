@@ -2,15 +2,15 @@
 }
 
 .disabled {
-  color: aqua;
+  color: rgb(11, 12, 12);
 }
 
 .secondary {
-  color: burlywood;
+  color: rgb(29, 37, 146);
 }
 
 .default {
-  color: burlywood;
+  color: rgb(0, 124, 6);
 }
 
 .red {
