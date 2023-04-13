@@ -2,15 +2,19 @@
 }
 
 .disabled {
+  color: aqua;
 }
 
 .secondary {
+  color: burlywood;
 }
 
 .default {
+  color: burlywood;
 }
 
 .red {
+  color:red
 }
 
 .default:hover {
