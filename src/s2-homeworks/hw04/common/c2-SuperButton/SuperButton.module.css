@@ -1,4 +1,6 @@
 .button {
+  padding: 8px;
+  border-radius: 10px;
 }
 
 .disabled {
@@ -18,23 +20,33 @@
 }
 
 .default:hover {
+  position: relative;
+  top: 3px;
 }
 
 .red:hover {
+  position: relative;
+  top: 3px;
 }
 
 .secondary:hover {
+  position: relative;
+  top: 1.5px;
 }
 
 
 .default:active {
+  transform: scale(1.1);
 }
 
 .secondary:active {
+ transform: scale(1.1)
 }
 
 .red:active {
+  transform: scale(1.1)
 }
 
 .button:disabled {
+  border: 1px solid black;
 }
