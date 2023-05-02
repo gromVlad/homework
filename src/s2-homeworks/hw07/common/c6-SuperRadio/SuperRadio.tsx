@@ -35,11 +35,10 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
     ...restProps
 }) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        // делают студенты
-        onChange?.(e)
-        onChangeOption?.(e.currentTarget.value)
-        console.log(e);
-        
+        const option = options?.find((o) => o.value === e.currentTarget.value).id;
+        if (option) {
+          onChangeOption?.(option);
+        }
     }
 
     const finalRadioClassName = s.radio + (className ? ' ' + className : '')
@@ -52,19 +51,9 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
                       id={id + '-input-' + o.id}
                       className={finalRadioClassName}
                       type={'radio'}
-                      // name, checked, value делают студенты
-                      //Это элемент <input> с атрибутами:
-                      // id - уникальный идентификатор элемента, который используется для связи метки (<label>) с этим элементом;
-                      // className - классы CSS, которые будут применены к элементу;
-                      // type - тип элемента, в данном случае радиокнопка, то есть type={'radio'};
-                      // name - имя группы радиокнопок, которые должны быть связаны между собой;
-                      // value - значение радиокнопки, которое будет передано при выборе этой кнопки;
-                      // checked - логический атрибут, который определяет, должна ли быть данная радиокнопка выбранной. Он устанавливается в true, если значение o.value равно value;
-                      // onChange - функция обратного вызова, которая будет вызываться при изменении состояния радиокнопки;
-                      // restProps - объект с дополнительными пропсами, которые могут быть переданы в элемент.
                       name={name}
                       value={o.value}
-                      checked ={o.value === value}
+                      checked ={o.id === value}
                       onChange={onChangeCallback}
                       {...restProps}
                   />
