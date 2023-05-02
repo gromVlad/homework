@@ -11,16 +11,15 @@ import s from './HW7.module.css'
 * 4 - сделать стили в соответствии с дизайном
 * */
 
-const arr : {id: number; value: string}[] = [
-    { id: 1, value: 'x' },
-    { id: 2, value: 'y' },
-    { id: 3, value: 'z' },
-] // value может быть изменено
+const arr: { id: number; value: string }[] = [
+  { id: 1, value: "Pre-Junior" },
+  { id: 2, value: "Junior" },
+  { id: 3, value: "Junior+" },
+]; // value может быть изменено
 
 export const HW7 = () => {
     const [value, setValue] = useState(1) // селект и радио должны работать синхронно
-    const themeId = 0
-
+    
     const onChangeOption =(value: string) => {
         setValue(+value)
     }
@@ -37,7 +36,6 @@ export const HW7 = () => {
                             options={arr}
                             value={value}
                             onChangeOption={onChangeOption}
-                            themeId={themeId}
                         />
                     </div>
                     <div>

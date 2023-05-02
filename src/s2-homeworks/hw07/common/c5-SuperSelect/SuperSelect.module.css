@@ -1,9 +1,33 @@
 .select {
+  display: block;
+  padding: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .select:focus {
+  border-color: #1e87f0;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(30, 135, 240, 0.25);
 }
 
+.option {
+  display: block;
+  padding: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color .15s ease-in-out;
+}
 
 .option:hover {
+  background-color: #f2f2f2;
 }
