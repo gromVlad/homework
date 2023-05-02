@@ -1,56 +1,30 @@
-import React, {
-    SelectHTMLAttributes,
-    DetailedHTMLProps,
-    ChangeEvent,
-} from 'react'
+import React, { SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent } from 'react'
 import s from './SuperSelect.module.css'
 
-type DefaultSelectPropsType = DetailedHTMLProps<
-    SelectHTMLAttributes<HTMLSelectElement>,
-    HTMLSelectElement
->
+type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
 type SuperSelectPropsType = DefaultSelectPropsType & {
-    options?: any[]
-    onChangeOption?: (option: any) => void
+    options?: string[]
+    onChangeOption?: (option: string) => void
 }
 
-const SuperSelect: React.FC<SuperSelectPropsType> = ({
-    options,
-    className,
-    onChange,
-    onChangeOption,
-    ...restProps
-}) => {
-    const mappedOptions: any[] = options
-        ? options.map((o) => (
-              <option
-                  id={'hw7-option-' + o.id}
-                  className={s.option}
-                  key={o.id}
-                  value={o.id}
-              >
-                  {o.value}
-              </option>
-          ))
-        : [] // map options with key
+const SuperSelect: React.FC<SuperSelectPropsType> = (
+    {
+        options,
+        onChangeOption,
+        ...restProps
+    }
+) => {
+    const mappedOptions: any[] = options ? options.map((u, ind) => {
+        return <option className={s.option} value={u} key={u + '-' + ind}  >{u}</option>
+    }) : []
 
     const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
-        // делают студенты
-        //  const option = options?.find((o) => o.id === +e.currentTarget.value).value;
-        //  onChangeOption?.(option);
-        //  onChange && onChange(e);
-        onChangeOption?.(+e.currentTarget.value);
+        onChangeOption && onChangeOption(e.currentTarget.value)
     }
 
-    const finalSelectClassName = s.select + (className ? ' ' + className : '')
-
     return (
-        <select
-            className={finalSelectClassName}
-            onChange={onChangeCallback}
-            {...restProps}
-        >
+        <select className={s.select} onChange={onChangeCallback} {...restProps}>
             {mappedOptions}
         </select>
     )
