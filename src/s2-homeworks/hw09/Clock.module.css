@@ -1,0 +1,63 @@
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  color: #333;
+}
+
+.watch {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.watch:hover {
+  color: #0077ff;
+}
+
+.watch strong {
+  font-weight: bold;
+}
+
+.more {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}
+
+.more span:not(:last-child)::after {
+  content: ', ';
+}
+
+#hw9-more br {
+  display: none;
+}
+
+#hw9-more {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+
+#hw9-more.show {
+  height: auto;
+}
+
+#hw9-day {
+  text-transform: capitalize;
+}
+
+#hw9-month {
+  text-transform: capitalize;
+}
+
+#hw9-time {
+  font-size: 2.4rem;
+}
