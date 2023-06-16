@@ -24,7 +24,7 @@ const HW13 = () => {
     const url =
       x === null
         ? "https://xxxxxx.ccc" // имитация запроса на не корректный адрес
-        : "https://samurai.it-incubator.io/api/3.0";
+        : "https://samurai.it-incubator.io/api/3.0/homework/test";
 
     setCode("");
     setImage("");
@@ -32,101 +32,105 @@ const HW13 = () => {
     setInfo("...loading");
 
     axios
-      .post(url, { success: x },)
+      .post(url, { success: x })
       .then((res) => {
-        console.log(res.status);
-        
-        setCode(`Код ${res.status}!`);
+        setCode("Код 200!");
         setImage(success200);
         // дописать
-        setInfo(res.data.info);
-        setText(res.data.errorText);
+        setText("...всё ок)");
+        setInfo("код 200 - обычно означает что скорее всего всё ок)");
       })
       .catch((e) => {
-        // дописать
-        if (e.response.status) {
-          console.log(e.response.data.errorText);
-          setCode(`Ошибка ${e.response.status}!!`);
-          setImage(e.response.status === 500 ? error500 : error400);
-          setInfo(e.response.data.info);
-          setText(e.response.data.errorText);
-        } else {
-          // console.log(e.name, e.message)
+        if (e.response === undefined) {
+          setCode("Error!");
           setImage(errorUnknown);
-          setCode("Error");
-          setInfo(e.name);
-          setText(e.message);
+          setText("Network Error");
+          setInfo("AxiosError");
         }
+        if (e.response)
+          switch (e.response.status) {
+            case 400:
+              setCode("Ошибка 400!");
+              setImage(error400);
+              setText("Ты не отправил success в body вообще!");
+              setInfo(
+                "ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!"
+              );
+              break;
+            case 500:
+              setCode("Ошибка 500!");
+              setImage(error500);
+              setText("эмитация ошибки на сервере");
+              setInfo(
+                "ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)"
+              );
+              break;
+          }
       });
   };
 
   return (
     <div id={"hw13"}>
-      <div className={s2.container}>
-        <div className={s2.hwTitle}>Homework №13</div>
-      </div>
-      <hr />
-      <div className={s2.container}>
-        <div className={s2.hw}>
-          <div className={s.buttonsContainer}>
-            <SuperButton
-              id={"hw13-send-true"}
-              onClick={send(true)}
-              xType={"secondary"}
-              // дописать
-              disabled={info === "...loading"}
-            >
-              Send true
-            </SuperButton>
-            <SuperButton
-              id={"hw13-send-false"}
-              onClick={send(false)}
-              xType={"secondary"}
-              // дописать
-              disabled={info === "...loading"}
-            >
-              Send false
-            </SuperButton>
-            <SuperButton
-              id={"hw13-send-undefined"}
-              onClick={send(undefined)}
-              xType={"secondary"}
-              // дописать
-              disabled={info === "...loading"}
-            >
-              Send undefined
-            </SuperButton>
-            <SuperButton
-              id={"hw13-send-null"}
-              onClick={send(null)} // имитация запроса на не корректный адрес
-              xType={"secondary"}
-              // дописать
-              disabled={info === "...loading"}
-            >
-              Send null
-            </SuperButton>
+      <div className={s2.hwTitle}>Homework #13</div>
+
+      <div className={s2.hw}>
+        <div className={s.buttonsContainer}>
+          <SuperButton
+            id={"hw13-send-true"}
+            onClick={send(true)}
+            xType={"secondary"}
+            // дописать
+            disabled={info === "...loading"}
+          >
+            Send true
+          </SuperButton>
+          <SuperButton
+            id={"hw13-send-false"}
+            onClick={send(false)}
+            xType={"secondary"}
+            // дописать
+            disabled={info === "...loading"}
+          >
+            Send false
+          </SuperButton>
+          <SuperButton
+            id={"hw13-send-undefined"}
+            onClick={send(undefined)}
+            xType={"secondary"}
+            // дописать
+            disabled={info === "...loading"}
+          >
+            Send undefined
+          </SuperButton>
+          <SuperButton
+            id={"hw13-send-null"}
+            onClick={send(null)} // имитация запроса на не корректный адрес
+            xType={"secondary"}
+            // дописать
+            disabled={info === "...loading"}
+          >
+            Send null
+          </SuperButton>
+        </div>
+
+        <div className={s.responseContainer}>
+          <div className={s.imageContainer}>
+            {image && <img src={image} className={s.image} alt="status" />}
           </div>
 
-          <div className={s.responseContainer}>
-            <div className={s.imageContainer}>
-              {image && <img src={image} className={s.image} alt="status" />}
+          <div className={s.textContainer}>
+            <div id={"hw13-code"} className={s.code}>
+              {code}
             </div>
-
-            <div className={s.textContainer}>
-              <div id={"hw13-code"} className={s.code}>
-                {code}
-              </div>
-              <div id={"hw13-text"} className={s.text}>
-                {text}
-              </div>
-              <div id={"hw13-info"} className={s.info}>
-                {info}
-              </div>
+            <div id={"hw13-text"} className={s.text}>
+              {text}
+            </div>
+            <div id={"hw13-info"} className={s.info}>
+              {info}
             </div>
           </div>
         </div>
       </div>
-      <hr />
     </div>
   );
 };

@@ -29,17 +29,17 @@
 
 .responseContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-top: 20px;
 }
 
 .imageContainer {
-  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 .image {
-  width: 400px;
+  max-width: 100%;
 }
 
 .code {
