@@ -57,16 +57,15 @@ const HW13 = () => {
           setCode("Неизвестная ошибка");
           setText("Что-то пошло не так...");
           setImage(errorUnknown);
-          setInfo("");
+          setInfo("errorUnknown");
           setIsload(false);
         }
       });
   };
 
   return (
-    <div id={"hw13"}>
+    <div id={"hw13"} >
       <div className={s2.hwTitle}>Homework #13</div>
-      ini Copy
       <div className={s2.hw}>
         <div className={s.buttonsContainer}>
           <SuperButton
