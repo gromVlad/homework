@@ -19,6 +19,7 @@ const HW13 = () => {
   const [text, setText] = useState("");
   const [info, setInfo] = useState("");
   const [image, setImage] = useState("");
+  const [bool, setbool] = useState(false);
 
   const send = (x?: boolean | null) => () => {
     const url =
@@ -26,11 +27,11 @@ const HW13 = () => {
         ? "https://xxxxxx.ccc" // имитация запроса на не корректный адрес
         : "https://samurai.it-incubator.io/api/3.0/homework/test";
 
-    setCode("");
-    setImage("");
-    setText("");
-    setInfo("...loading");
-
+    setCode("Error!");
+    setImage(errorUnknown);
+    setText("Network Error");
+    setInfo("AxiosError");
+    setbool(true)
     axios
       .post(url, { success: x })
       .then((res) => {
@@ -66,7 +67,8 @@ const HW13 = () => {
               );
               break;
           }
-      });
+      })
+      .finally(() => setbool(false))
   };
 
   return (
@@ -80,7 +82,7 @@ const HW13 = () => {
             onClick={send(true)}
             xType={"secondary"}
             // дописать
-            disabled={info === "...loading"}
+            disabled={bool}
           >
             Send true
           </SuperButton>
@@ -89,7 +91,7 @@ const HW13 = () => {
             onClick={send(false)}
             xType={"secondary"}
             // дописать
-            disabled={info === "...loading"}
+            disabled={bool}
           >
             Send false
           </SuperButton>
@@ -98,7 +100,7 @@ const HW13 = () => {
             onClick={send(undefined)}
             xType={"secondary"}
             // дописать
-            disabled={info === "...loading"}
+            disabled={bool}
           >
             Send undefined
           </SuperButton>
@@ -107,7 +109,7 @@ const HW13 = () => {
             onClick={send(null)} // имитация запроса на не корректный адрес
             xType={"secondary"}
             // дописать
-            disabled={info === "...loading"}
+            disabled={bool}
           >
             Send null
           </SuperButton>
