@@ -1,11 +1,95 @@
+css
+Copy
 .pagination {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-.text1 {
-
-}
-
+.text1,
 .text2 {
+  font-size: 16px;
+  margin: 0 10px;
+}
 
+.MuiPagination-root {
+  display: flex;
+  align-items: center;
+}
+
+.MuiPaginationItem-root {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.MuiPaginationItem-root:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.MuiPaginationItem-root.Mui-selected {
+  background-color: #333;
+  color: #fff;
+}
+
+.MuiPaginationItem-root.Mui-selected:hover {
+  background-color: #555;
+}
+
+.MuiPaginationItem-root.Mui-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.MuiPaginationItem-textPrimary.Mui-selected {
+  color: #fff;
+}
+
+.MuiSelect-root {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.MuiSelect-root:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.MuiSelect-icon {
+  color: #333;
+}
+
+.MuiSelect-select {
+  padding: 0;
+  margin: 0;
+  height: auto;
+  background-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.MuiSelect-select option {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background-color: #fff;
+}
+
+.MuiSelect-select:focus {
+  outline: none;
+  box-shadow: none;
 }
